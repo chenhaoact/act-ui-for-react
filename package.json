@@ -1,0 +1,11 @@
+{
+  "name": "act-ui-for-react",
+  "version": "1.0.0",
+  "description": "这是一个react的UI组件库，包含基础组件与业务组件，用于提升react应用的开发效率。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chenhaoact",
+  "license": "ISC"
+}
