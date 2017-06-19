@@ -7,5 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "chenhaoact",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "antd-demo-jest": "^1.0.5",
+    "antd-tools": "^1.5.0",
+    "babel-jest": "^19.0.0",
+    "jest": "^19.0.2",
+    "typescript-babel-jest": "^1.0.2"
+  }
 }

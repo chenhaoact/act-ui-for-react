@@ -6,3 +6,10 @@ a ui component library for react
 代码结构和库的依赖以及技术在ant-d之内（所有不需要额外安装其他的依赖），支持风格配置。
 
 但本组件库的组件写法和ant-d不同，同时包含一些ant-d没有的基础组件和业务组件。
+
+本组件库参考了ant-design组件库：https://github.com/ant-design/ant-design
+在研究ant-design组件库代码的基础上重新完善和添加了一些组件，并在组件库的代码中进行了详细的中文注释，方便使用与参考。
+
+
+##一 组件使用
+
