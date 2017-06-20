@@ -13,7 +13,13 @@
     "antd-demo-jest": "^1.0.5",
     "antd-tools": "^1.5.0",
     "babel-jest": "^19.0.0",
+    "dekko": "^0.2.0",
+    "enzyme": "^2.6.0",
+    "enzyme-to-json": "^1.3.0",
+    "glob": "^7.1.1",
     "jest": "^19.0.2",
+    "mockdate": "^2.0.1",
+    "react": "^15.0.0",
     "typescript-babel-jest": "^1.0.2"
   }
 }
