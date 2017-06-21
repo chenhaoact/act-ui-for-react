@@ -2,24 +2,129 @@
   "name": "act-ui-for-react",
   "version": "1.0.0",
   "description": "这是一个react的UI组件库，包含基础组件与业务组件，用于提升react应用的开发效率。",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest",
-    "test-all": "./scripts/test-all.sh"
-  },
+  "keywords": [
+    "design",
+    "react",
+    "react-component",
+    "component",
+    "components",
+    "ui",
+    "framework",
+    "frontend"
+  ],
   "author": "chenhaoact",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chenhaoact/act-ui-for-react"
+  },
+  "bugs": {
+    "url": "https://github.com/chenhaoact/act-ui-for-react/issues"
+  },
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
+  "typings": "lib/index.d.ts",
+  "license": "MIT",
+  "dependencies": {},
   "devDependencies": {
     "antd-demo-jest": "^1.0.5",
     "antd-tools": "^1.5.0",
+    "babel-cli": "^6.18.0",
+    "babel-eslint": "^7.1.0",
     "babel-jest": "^19.0.0",
+    "babel-plugin-import": "^1.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
     "dekko": "^0.2.0",
     "enzyme": "^2.6.0",
     "enzyme-to-json": "^1.3.0",
+    "eslint": "^3.0.1",
+    "eslint-config-airbnb": "latest",
+    "eslint-plugin-babel": "^4.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-markdown": "~1.0.0-beta.4",
+    "eslint-plugin-react": "^7.0.1",
+    "eslint-tinker": "^0.4.0",
     "glob": "^7.1.1",
     "jest": "^19.0.2",
+    "lint-staged": "^3.3.1",
     "mockdate": "^2.0.1",
     "react": "^15.0.0",
     "typescript-babel-jest": "^1.0.2"
-  }
+  },
+  "scripts": {
+    "test": "jest",
+    "test-all": "./scripts/test-all.sh",
+    "lint": "npm run lint:ts && npm run lint:es && npm run lint:demo && npm run lint:style",
+    "lint:ts": "npm run tsc && antd-tools run ts-lint",
+    "lint:es": "eslint tests site scripts components ./.eslintrc.js ./webpack.config.js --ext '.js,.jsx'",
+    "lint:demo": "cross-env RUN_ENV=DEMO eslint components/*/demo/*.md --ext '.md'",
+    "lint:style": "stylelint \"{site,components}/**/*.less\" --syntax less",
+    "lint-fix:ts": "npm run tsc && antd-tools run ts-lint-fix",
+    "lint-fix": "npm run lint-fix:code && npm run lint-fix:demo",
+    "lint-fix:code": "eslint --fix tests site scripts components ./.eslintrc.js ./webpack.config.js --ext '.js,.jsx'",
+    "lint-fix:demo": "eslint-tinker ./components/*/demo/*.md"
+  },
+  "lint-staged": {
+    "components/**/*.tsx": [
+      "lint-staged:ts"
+    ],
+    "{tests,site,scripts,components}/**/*.{js,jsx}": [
+      "lint-staged:es"
+    ],
+    "{site,components}/**/*.less": "stylelint --syntax less",
+    "components/*/demo/*.md": [
+      "lint-staged:demo"
+    ]
+  },
+  "jest": {
+    "setupFiles": [
+      "./tests/setup.js"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "md"
+    ],
+    "modulePathIgnorePatterns": [
+      "/_site/"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "dekko",
+      "node"
+    ],
+    "transform": {
+      "\\.tsx?$": "./node_modules/typescript-babel-jest",
+      "\\.js$": "./node_modules/babel-jest",
+      "\\.md$": "./node_modules/antd-demo-jest"
+    },
+    "testRegex": ".*\\.test\\.js$",
+    "collectCoverageFrom": [
+      "components/**/*.{ts,tsx}",
+      "!components/*/style/index.tsx",
+      "!components/style/index.tsx",
+      "!components/*/locale/index.tsx"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "pre-commit": [
+    "lint-staged"
+  ]
 }
